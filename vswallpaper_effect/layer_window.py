@@ -11,12 +11,18 @@ gi.require_version("GtkLayerShell", "0.1")
 from gi.repository import Gdk, GLib, Gtk, GtkLayerShell
 
 from .model import AppConfig
-from .renderer import WallpaperEffectRenderer
 
 
-def make_preview_area(config: AppConfig) -> "RendererAreaCairo":
-    """Editor preview widget — always Cairo (small 240 px strip, CPU cost is negligible)."""
-    return RendererAreaCairo(config)
+def make_preview_area(config: AppConfig):
+    """Editor preview widget — OpenGL, same renderer as the daemon.
+
+    Falls back to an informative error label if PyOpenGL is not installed.
+    """
+    try:
+        from .gl_renderer import GLRendererWidget
+        return GLRendererWidget(config)
+    except ImportError:
+        return _MissingGLLabel()
 
 
 def make_daemon_area(config: AppConfig):
@@ -34,48 +40,28 @@ def make_daemon_area(config: AppConfig):
         sys.exit(1)
 
 
-class RendererAreaCairo(Gtk.DrawingArea):
-    def __init__(self, config: AppConfig):
-        super().__init__()
-        self._renderer = WallpaperEffectRenderer(config)
-        self._tick_id = 0
-        self.set_hexpand(True)
-        self.set_vexpand(True)
-        self.connect("draw", self._on_draw)
-        self._restart_loop()
+class _MissingGLLabel(Gtk.Box):
+    """Placeholder shown in the editor when PyOpenGL is not installed."""
 
-    @property
-    def renderer(self) -> WallpaperEffectRenderer:
-        return self._renderer
-
-    def set_config(self, config: AppConfig) -> None:
-        self._renderer.set_config(config)
-        self._restart_loop()
-        self.queue_draw()
+    def set_config(self, config: AppConfig) -> None:  # noqa: ARG002
+        pass
 
     def stop(self) -> None:
-        if self._tick_id:
-            GLib.source_remove(self._tick_id)
-            self._tick_id = 0
+        pass
 
-    def _restart_loop(self) -> None:
-        self.stop()
-        self._tick_id = GLib.timeout_add(self._renderer.tick_interval_ms, self._on_tick)
-
-    def _on_draw(self, widget, cr):
-        width = widget.get_allocated_width()
-        height = widget.get_allocated_height()
-        self._renderer.draw(cr, width, height)
-        return False
-
-    def _on_tick(self) -> bool:
-        width = self.get_allocated_width()
-        height = self.get_allocated_height()
-        if width > 0 and height > 0:
-            changed = self._renderer.tick(width, height)
-            if changed or self._renderer.needs_animation:
-                self.queue_draw()
-        return True
+    def __init__(self):
+        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self.set_hexpand(True)
+        self.set_vexpand(True)
+        lbl = Gtk.Label(
+            label="PyOpenGL not installed — preview unavailable.\n"
+                  "Install with: pip install --user PyOpenGL"
+        )
+        lbl.set_justify(Gtk.Justification.CENTER)
+        self.set_halign(Gtk.Align.CENTER)
+        self.set_valign(Gtk.Align.CENTER)
+        self.pack_start(lbl, True, True, 0)
+        self.show_all()
 
 
 class BackgroundWindow(Gtk.Window):

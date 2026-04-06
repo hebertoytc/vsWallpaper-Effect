@@ -62,7 +62,7 @@ class EffectConfig:
         self.color = normalize_hex_color(self.color, "")
         self.color2 = normalize_hex_color(self.color2, "")
         self.color3 = normalize_hex_color(self.color3, "")
-        self.density = int(clamp(int(self.density or 100), 10, 500))
+        self.density = max(10, int(self.density or 100))
         self.vertical_pos = int(clamp(int(self.vertical_pos if self.vertical_pos is not None else 70), 0, 100))
         return self
 

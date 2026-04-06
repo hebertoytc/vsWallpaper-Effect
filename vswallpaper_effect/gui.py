@@ -29,7 +29,7 @@ _DEPS = [
     ("python-gobject",  "python-gobject",  "gi",      None,       "sudo pacman -S --needed python-gobject",  "GTK3 Python bindings"),
     ("gtk3",            "gtk3",            None,      None,       "sudo pacman -S --needed gtk3",            "GTK3 toolkit"),
     ("gtk-layer-shell", "gtk-layer-shell", None,      None,       "sudo pacman -S --needed gtk-layer-shell", "Wayland layer-shell support"),
-    ("python-cairo",    "python-cairo",    "cairo",   None,       "sudo pacman -S --needed python-cairo",    "Cairo rendering (preview)"),
+    ("python-cairo",    "python-cairo",    "cairo",   None,       "sudo pacman -S --needed python-cairo",    "Cairo (matrix font atlas)"),
     ("PyOpenGL",        None,              "OpenGL",  None,       "pip install --user PyOpenGL",             "OpenGL renderer — required for daemon"),
     ("fontconfig",      "fontconfig",      None,      "fc-list",  "sudo pacman -S --needed fontconfig",      "Font detection for matrix effect"),
 ]
@@ -363,7 +363,7 @@ class VsWallpaperEffectEditor(Gtk.Window):
         box.set_margin_bottom(18)
 
         box.pack_start(_section("Effect"), False, False, 0)
-        box.pack_start(_hint("Effects are rendered live in Cairo on top of the wallpaper."), False, False, 0)
+        box.pack_start(_hint("Effects are rendered via OpenGL on top of the wallpaper."), False, False, 0)
 
         enabled_row, enabled = _switch_row("Enabled", self._cfg.effect.enabled)
         enabled.connect("notify::active", self._on_controls_changed)
@@ -388,7 +388,7 @@ class VsWallpaperEffectEditor(Gtk.Window):
         self._w["effect.opacity"] = opacity
         box.pack_start(_field("Opacity", opacity), False, False, 0)
 
-        density = _spin(self._cfg.effect.density, 10, 500, step=5)
+        density = _spin(self._cfg.effect.density, 10, 9999, step=5)
         density.connect("value-changed", self._on_controls_changed)
         self._w["effect.density"] = density
         box.pack_start(_field("Density", density), False, False, 0)
@@ -1189,13 +1189,13 @@ class VsWallpaperEffectEditor(Gtk.Window):
 
         # ── Stack ─────────────────────────────────────────────────────
         stack_lbl = Gtk.Label()
-        stack_lbl.set_markup('<span size="small">GTK3 + Cairo + OpenGL (gl-renderer) + gtk-layer-shell</span>')
+        stack_lbl.set_markup('<span size="small">GTK3 + OpenGL (gl-renderer) + gtk-layer-shell</span>')
         stack_lbl.get_style_context().add_class("hint-label")
         stack_lbl.set_margin_top(8)
         stack_lbl.set_margin_bottom(4)
         box.pack_start(stack_lbl, False, False, 0)
 
-        note_lbl = Gtk.Label(label="Preview uses Cairo · Daemon uses OpenGL when available")
+        note_lbl = Gtk.Label(label="Editor preview and daemon both use OpenGL")
         note_lbl.get_style_context().add_class("hint-label")
         box.pack_start(note_lbl, False, False, 0)
 
