@@ -5,6 +5,7 @@
 </p>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![AUR version](https://img.shields.io/aur/version/vswallpaper-effect)](https://aur.archlinux.org/packages/vswallpaper-effect)
 
 A wallpaper effects engine for Wayland — animate your desktop with GPU-accelerated effects rendered in real time on top of any image or folder slideshow.
 
