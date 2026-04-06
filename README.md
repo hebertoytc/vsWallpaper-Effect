@@ -22,6 +22,22 @@ The editor shows a live preview as you change every parameter. The daemon runs a
 
 ---
 
+## Screenshots
+
+### Rain Effect
+![Rain](screenshots/1.png)
+
+### Matrix Effect
+![Matrix](screenshots/2.png)
+
+### Warp Effect
+![Wallpaper](screenshots/3.png)
+
+### Snow Effect
+![Snow](screenshots/4.png)
+
+---
+
 ## Features
 
 - **GPU-accelerated rendering** — all effects run as GLSL fragment shaders via OpenGL; Cairo is only used as a fallback when PyOpenGL is not installed
