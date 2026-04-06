@@ -90,9 +90,24 @@ Optional:
 
 ## Installation
 
-### Manual
+### AUR (Arch Linux — recommended)
 
 ```bash
+yay -S vswallpaper-effect
+```
+
+Or with paru:
+
+```bash
+paru -S vswallpaper-effect
+```
+
+All dependencies are pulled in automatically.
+
+### Manual (Arch Linux)
+
+```bash
+sudo pacman -S python-gobject gtk3 gtk-layer-shell python-cairo python-opengl fontconfig
 git clone https://github.com/victorsosaMx/vsWallpaper-Effect
 cd vsWallpaper-Effect
 pip install -e .
@@ -103,13 +118,6 @@ Or run directly without installing:
 ```bash
 chmod +x vswallpaper-effect
 ./vswallpaper-effect
-```
-
-### Install dependencies (Arch Linux)
-
-```bash
-sudo pacman -S python-gobject gtk3 gtk-layer-shell python-cairo fontconfig
-pip install --user PyOpenGL   # required for the daemon
 ```
 
 ---
